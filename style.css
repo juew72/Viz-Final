@@ -45,7 +45,6 @@ path:hover {  opacity:0.9; }
 .axis line {
   fill: none;
   stroke: #000;
-  shape-rendering: crispEdges;
 }
 
 .x.axis path {  display: none; }
