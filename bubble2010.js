@@ -123,4 +123,4 @@ node.append("text")
 d3.select(self.frameElement)
     .style("height", diameter + "px");
 
-chart.render();
+var a1 = chart.render();
