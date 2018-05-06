@@ -8,7 +8,7 @@ var freqData=[
 ];
 
 dashboard('#dashboard',freqData);
-function Dashboard(id, fData){
+function dashboard(id, fData){
     var barColor = '#FFD700';
     function segColor(c){ return {under16:"#D2691E", between:"#4169E1", above21:"#20B2AA"}[c]; }
 
