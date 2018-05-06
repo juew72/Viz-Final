@@ -62,7 +62,7 @@ var bubble = d3.pack(dataset)
     .size([diameter, diameter])
     .padding(1.5);
 
-var svg = d3.select("#chart2010")
+var svg = d3.select("div2010")
     .append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
