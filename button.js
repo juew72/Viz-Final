@@ -9,5 +9,5 @@ function openYear(evt, Year) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(Year).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.className += orange;
 }
