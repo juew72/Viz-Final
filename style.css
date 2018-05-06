@@ -48,7 +48,7 @@ path:hover {  opacity:0.9; }
   shape-rendering: crispEdges;
 }
 
-.x.axis path {  display: none; }
+
 .legend{
     margin-bottom:76px;
     display:inline-block;
