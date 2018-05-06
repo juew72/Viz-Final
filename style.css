@@ -43,12 +43,12 @@ path:hover {  opacity:0.9; }
 
 .axis path,
 .axis line {
-  fill: none;
+  fill: yellow;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-
+.x.axis path {  display: none; }
 .legend{
     margin-bottom:76px;
     display:inline-block;
