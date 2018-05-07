@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="https://rawgit.com/juew72/Viz-Final/master/w3box.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current',{'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawSheets);
+
+		function drawSheets() {
+			drawSheetName('to State top10', 'SELECT A,B,I,P',
+							S2010t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,C,J,P',
+							S2011t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,D,K,P',
+							S2012t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,E,L,P',
+							S2013t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,F,M,P',
+							S2014t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,G,N,P',
+							S2015t10ResponseHandler);
+			drawSheetName('to State top10', 'SELECT A,H,O,P',
+							S2016t10ResponseHandler);
+			} //drawAllSheets
+
+		function drawSheetName(sheetName, query, responseHandler) {
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/1t3jv_r0XgdVrIPAaErfl7psDrY7kLSYuoYlZhU_xa6M/gviz/tq?sheet='
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //drawSheetName
+
+		function checkError(response) {
+			if (response.isError()) {
+				alert('Error in query: ' + response.getMessage() +
+					' ' + response.getDetailedMessage());
+				return;
+			}
+		}
+
+		function S2010t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2010',
+					hAxis: {title: 'Number of People to each state 2010'},
+					vAxis: {title: 'percentage of each state to total number of people 2010 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2010t10_div'));
+			chart.draw(data, options);
+		} //S2010t10ResponseHandler
+
+		function S2011t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2011',
+					hAxis: {title: 'Number of People to each state 2011'},
+					vAxis: {title: 'percentage of each state to total number of people 2011 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2011t10_div'));
+			chart.draw(data, options);
+		} //S2011t10ResponseHandler
+
+		function S2012t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2012',
+					hAxis: {title: 'Number of People to each state 2012'},
+					vAxis: {title: 'percentage of each state to total number of people 2012 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2012t10_div'));
+			chart.draw(data, options);
+		} //S2012t10ResponseHandler
+
+		function S2013t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2013',
+					hAxis: {title: 'Number of People to each state 2013'},
+					vAxis: {title: 'percentage of each state to total number of people 2013 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2013t10_div'));
+			chart.draw(data, options);
+		} //S2013t10ResponseHandler
+
+		function S2014t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2014',
+					hAxis: {title: 'Number of People to each state 2014'},
+					vAxis: {title: 'percentage of each state to total number of people 2014 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2014t10_div'));
+			chart.draw(data, options);
+		} //S2014t10ResponseHandler
+
+		function S2015t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2015',
+					hAxis: {title: 'Number of People to each state 2015'},
+					vAxis: {title: 'percentage of each state to total number of people 2015 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2015t10_div'));
+			chart.draw(data, options);
+		} //S2015t10ResponseHandler
+
+		function S2016t10ResponseHandler(response) {
+			checkError(response);
+			var data = response.getDataTable();
+			data.sort({column: 0, desc: false});
+
+			var options = {
+					width: 600,
+					height: 400,
+					title: 'Top 10 states that people holding US Visa would like to live 2016',
+					hAxis: {title: 'Number of People to each state 2016'},
+					vAxis: {title: 'percentage of each state to total number of people 2016 (%)'},
+					colors: ['#FFF8DC','#F08080'],
+			};
+
+			var chart = new google.visualization.BubbleChart(
+					document.getElementById('S2016t10_div'));
+			chart.draw(data, options);
+		} //S2016t10ResponseHandler
+
+	</script>
+</head>
+
+<body>
+
+  <div class="w3-bar w3-light-blue w3-round">
+	  <button class="w3-bar-item w3-button w3-hover-red" onclick="openy('2010')">Y2010</button>
+	  <button class="w3-bar-item w3-button w3-hover-pink" onclick="openy('2011')">Y2011</button>
+	  <button class="w3-bar-item w3-button w3-hover-yellow" onclick="openy('2012')">Y2012</button>
+	  <button class="w3-bar-item w3-button w3-hover-lime" onclick="openy('2013')">Y2013</button>
+	  <button class="w3-bar-item w3-button w3-hover-aqua" onclick="openy('2014')">Y2014</button>
+	  <button class="w3-bar-item w3-button w3-hover-teal" onclick="openy('2015')">Y2015</button>
+	  <button class="w3-bar-item w3-button w3-hover-indigo" onclick="openy('2016')">Y2016</button>
+	</div>
+
+  <div id="2010" class="w3-container Year" style="display:none">
+    <h2>2010</h2>
+    <div id="S2010t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2011" class="w3-container Year" style="display:none">
+    <h2>2011</h2>
+    <div id="S2011t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2012" class="w3-container Year" style="display:none">
+    <h2>2012</h2>
+    <div id="S2012t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2013" class="w3-container Year" style="display:none">
+    <h2>2013</h2>
+    <div id="S2013t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2014" class="w3-container Year" style="display:none">
+    <h2>2014</h2>
+    <div id="S2014t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2015" class="w3-container Year" style="display:none">
+    <h2>2015</h2>
+    <div id="S2015t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+  <div id="2016" class="w3-container Year" style="display:none">
+    <h2>2016</h2>
+    <div id="S2016t10_div" style="width:700px; height:500px"></div>
+  </div>
+
+</body>
+</html>
