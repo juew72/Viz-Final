@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+</head>
+<body>
+  	<script type="text/javascript">
+    dataset = {
+        "children": [{"Name":"Alabama","Count":3848},
+            {"Name":"Alaska","Count":1460},
+            {"Name":"Arizona","Count":16097},
+            {"Name":"Arkansas","Count":2900},
+            {"Name":"California","Count":191806},
+            {"Name":"Colorado","Count":11108},
+            {"Name":"Connecticut","Count":10985},
+            {"Name":"Delaware","Count":2325},
+            {"Name":"District of Columbia","Count":2981},
+            {"Name":"Florida","Count":102939},
+            {"Name":"Georgia","Count":24387},
+            {"Name":"Guam","Count":1210},
+            {"Name":"Hawaii","Count":6226},
+            {"Name":"Idaho","Count":2120},
+            {"Name":"Illinois","Count":35988},
+            {"Name":"Indiana","Count":7668},
+            {"Name":"Iowa","Count":4105},
+            {"Name":"Kansas","Count":5000},
+            {"Name":"Kentucky","Count":5159},
+            {"Name":"Louisiana","Count":4355},
+            {"Name":"Maine","Count":1208},
+            {"Name":"Maryland","Count":25361},
+            {"Name":"Massachusetts","Count":29482},
+            {"Name":"Michigan","Count":16952},
+            {"Name":"Minnesota","Count":12781},
+            {"Name":"Mississippi","Count":1716},
+            {"Name":"Missouri","Count":6345},
+            {"Name":"Montana","Count":445},
+            {"Name":"Nebraska","Count":4141},
+            {"Name":"Nevada","Count":9886},
+            {"Name":"New Hampshire","Count":2227},
+            {"Name":"New Jersy","Count":53082},
+            {"Name":"New Mexico","Count":3664},
+            {"Name":"New York","Count":133601},
+            {"Name":"North Carolina","Count":16798},
+            {"Name":"North Dakota","Count":1234},
+            {"Name":"Ohio","Count":13819},
+            {"Name":"Oklahoma","Count":4648},
+            {"Name":"Oregon","Count":7171},
+            {"Name":"Pennsylvania","Count":24720},
+            {"Name":"Puerto Rico","Count":2942},
+            {"Name":"Rhode Island","Count":3337},
+            {"Name":"South Carolina","Count":4266},
+            {"Name":"South Dakota","Count":1231},
+            {"Name":"Tennessee","Count":8380},
+            {"Name":"Texas","Count":92674},
+            {"Name":"Utah","Count":5503},
+            {"Name":"Vermont","Count":838},
+            {"Name":"Virginia","Count":27861},
+            {"Name":"Washington","Count":22994},
+            {"Name":"West Virginia","Count":760},
+            {"Name":"Wisconsin","Count":5918},
+            {"Name":"Wyoming","Count":522},
+            {"Name":"Other","Count":1379}]
+    };
+    
+var diameter = 600;
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+var bubble = d3.pack(dataset)
+    .size([diameter, diameter])
+    .padding(1.5);
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+
+var nodes = d3.hierarchy(dataset)
+    .sum(function(d) { return d.Count; });
+
+var node = svg.selectAll(".node")
+    .data(bubble(nodes).descendants())
+    .enter()
+    .filter(function(d){
+        return  !d.children
+    })
+    .append("g")
+    .attr("class", "node")
+    .attr("transform", function(d) {
+        return "translate(" + d.x + "," + d.y + ")";
+    });
+
+node.append("title")
+    .text(function(d) {
+        return d.Name + ": " + d.Count;
+    });
+
+node.append("circle")
+    .attr("r", function(d) {
+        return d.r;
+    })
+    .style("fill", function(d,i) {
+        return color(i);
+    });
+
+node.append("text")
+    .attr("dy", ".2em")
+    .style("text-anchor", "middle")
+    .text(function(d) {
+        return d.data.Name.substring(0, d.r / 3);
+    })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", function(d){
+        return d.r/5;
+    })
+    .attr("fill", "white");
+
+node.append("text")
+    .attr("dy", "1.3em")
+    .style("text-anchor", "middle")
+    .text(function(d) {
+        return d.data.Count;
+    })
+    .attr("font-family",  "Gill Sans", "Gill Sans MT")
+    .attr("font-size", function(d){
+        return d.r/5;
+    })
+    .attr("fill", "white");
+
+d3.select(self.frameElement)
+    .style("height", diameter + "px");
+</script>
+</body>
+</html>
